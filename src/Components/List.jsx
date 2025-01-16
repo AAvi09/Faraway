@@ -7,11 +7,11 @@ const InitialItems = [
   { id: 3, description: "pants", packed: true, quantity: 8 },
 ];
 
-const List = () => {
+const List = ({ items, onDeleteItems }) => {
   return (
     <div className="bg-red-950 w-screen h-80 text-white font-medium flex space-x-7 ">
-      {InitialItems.map((item) => (
-        <Item key={item.id} item={item} />
+      {items.map((item) => (
+        <Item key={item.id} item={item} onDeleteItems={onDeleteItems} />
       ))}
     </div>
   );

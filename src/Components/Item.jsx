@@ -1,7 +1,7 @@
 import React from "react";
 
-const Item = ({ item }) => {
-  const { description, packed, quantity } = item;
+const Item = ({ item, onDeleteItems }) => {
+  const { description, packed, quantity, id } = item;
   return (
     <div className="space-x-2 p-2 m-2">
       <span>
@@ -11,7 +11,13 @@ const Item = ({ item }) => {
         {description}
       </span>
       <span>{quantity}</span>
-      <span>❌</span>
+      <button
+        onClick={() => {
+          onDeleteItems(id);
+        }}
+      >
+        ❌
+      </button>
     </div>
   );
 };
