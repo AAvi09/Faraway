@@ -22,6 +22,9 @@ function App() {
       )
     );
   };
+  const handleClearList = () => {
+    setItems((item) => []);
+  };
   return (
     <div>
       <Logo />
@@ -30,8 +33,9 @@ function App() {
         items={items}
         onDeleteItems={handleDeleteItems}
         onToggleItems={handleToggleItems}
+        onClearList={handleClearList}
       />
-      <Stats items={items}/>
+      <Stats items={items} />
     </div>
   );
 }
