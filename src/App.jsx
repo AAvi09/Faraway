@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Footer from "./Components/Footer";
+import Stats from "./Components/Stats";
 import Form from "./Components/Form";
 import List from "./Components/List";
 import Logo from "./Components/Logo";
@@ -15,12 +15,23 @@ function App() {
   const handleDeleteItems = (id) => {
     setItems((items) => items.filter((item) => item.id !== id));
   };
+  const handleToggleItems = (id) => {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  };
   return (
     <div>
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <List items={items} onDeleteItems={handleDeleteItems} />
-      <Footer />
+      <List
+        items={items}
+        onDeleteItems={handleDeleteItems}
+        onToggleItems={handleToggleItems}
+      />
+      <Stats items={items}/>
     </div>
   );
 }
